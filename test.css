@@ -1,0 +1,30 @@
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.loader {
+  font-size: 80px;
+  color: #ffd600;
+  animation: pulse 1s infinite alternate, glow 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(2); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #ffd600, 0 0 15px #ffd600; }
+  50% { text-shadow: 0 0 20px #ffd600, 0 0 30px #ffae00; }
+  100% { text-shadow: 0 0 10px #ffd600, 0 0 20px #ffd600; }
+}
