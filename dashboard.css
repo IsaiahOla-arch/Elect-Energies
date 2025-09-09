@@ -1,0 +1,428 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+.web{
+    background-color: #f5f7fa;
+}
+nav {
+    background: black;
+    height: 110px;
+}
+nav img {
+    height: 80px;
+    width: 160px;
+    position: relative;
+    top: 15px;
+    left: 300px;
+    filter: drop-shadow(0 2px 10px #ffd60088);
+    transition: transform .4s;
+}
+nav img:hover{
+    transform: scale(1.18) rotate(-3deg);
+}
+nav h1{
+    color: white;
+    position: absolute;
+    letter-spacing: 2px;
+    top: 25px;
+    left: 485px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 25.6px;
+    font-weight: 900;
+    line-height: 30.72px;
+}
+nav main {
+    position: absolute;
+    top: 70px;
+    left: 484px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.6px;
+    font-weight: 400;
+    line-height: 26.4px;
+    color: #ffd600;
+}
+
+.side-bar {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 210px;
+    height: 480px;
+    background: linear-gradient(rgb(7, 7, 7), #171818);
+    color: white;
+    font-family: Inter, Arial, sans-serif;
+}
+.side-bar main {
+    font-family: Inter, Arial, sans-serif;
+    font-size: 24px;
+    letter-spacing: 1.01px;
+    font-weight: 700;
+    line-height: 28.8px;
+    padding: 20px;
+    color: rgb(255, 214, 0);
+}
+.name {
+    position: relative;
+    top: 5px;
+    border: 1px solid transparent;
+    height: 50px;
+    background-color: #232425;
+    border-radius: 8px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(255, 255, 255);
+}
+.dashboard {
+    position: relative;
+    left: 16px;
+    margin-top: 20px;
+    width: 180px;
+    height: 60px;
+    border-radius: 6px;
+    background-color: #ffd600;
+    border: none;
+    color: #2d3a4e;
+    text-align: center;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.28px;
+    font-weight: 600;
+    line-height: 25.92px;
+}
+.welcome{
+    position: absolute;
+    top: 150px;
+    left: 250px;
+}
+.welcome h1{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    line-height: 38.4px;
+    color: black;
+}
+.sub{
+    position: relative;
+    top: 35px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.6px;
+    font-weight: 400;
+    line-height: 26.4px;
+}
+.sub1{
+    position: absolute;
+    left: 800px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    color: rgb(45, 58, 78);
+    padding: 8px;
+    border-radius: 20px;
+    text-align: center;
+    width: 75px;
+    letter-spacing: 1px;
+    background-color: #ffd600;
+}
+.side-bar a{
+    text-decoration: none;
+}
+.audit {
+    position: relative;
+    top: 7px;
+    height: 75px;
+    border-radius: 8px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.28px;
+    font-weight: 600;
+    line-height: 25.92px;
+    color: rgb(172, 182, 196);
+}
+.audit:hover{
+    color: #2d3a4e;
+    background-color: #ffd600;
+}
+.audit div {
+    margin-left: 60px;
+    align-items: center;
+}
+.audit .per {
+    position: relative;
+    top: 10px;
+}
+.audit .aud {
+    position: relative;
+    top: 10px;
+}
+.request{
+    position: relative;
+    top: 14px;
+    height: 75px;
+    border-radius: 8px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.28px;
+    font-weight: 600;
+    line-height: 25.92px;
+    color: rgb(172, 182, 196);
+}
+.request:hover{
+    color: #2d3a4e;
+    background-color: #ffd600;
+}
+.request div{
+    margin-left: 60px;
+    align-items: center;
+}
+.request .sum{
+    position: relative;
+    top: 10px;
+}
+.request .req{
+    position: relative;
+    top: 10px;
+}
+.routine{
+    position: relative;
+    top: 21px;
+    height: 75px;
+    border-radius: 8px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.28px;
+    font-weight: 600;
+    line-height: 25.92px;
+    color: rgb(172, 182, 196);
+}
+.routine:hover{
+    color: #2d3a4e;
+    background-color: #ffd600;
+}
+.routine div{
+    margin-left: 60px;
+    align-items: center;
+}
+.routine .daily{
+    position: relative;
+    top: 10px;
+}
+.routine .rout{
+    position: relative;
+    top: 10px;
+}
+.sum i{
+    position: absolute;
+    right: 165px;
+    top: 10px;
+}
+.per i{
+    position: absolute;
+    right: 165px;
+    top: 10px;
+}
+.daily i{
+    position: absolute;
+    right: 165px;
+    top: 10px; 
+}
+.dashboard .bi{
+    color: #2d3a4e;
+}
+/* Default icon color */
+ .bi {
+  color: #ffd600;
+}
+
+/* When hovering on the parent div, change icon color */
+.audit:hover i,
+.request:hover i,
+.routine:hover i{
+  color: #2d3a4e;  /* dark blue */
+}
+.footer-bar {
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    background: black;
+    padding: 20px 0;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #ffd600;
+}
+.container a{
+    color: #ffd600; 
+}
+.extra {
+    border-top: 2px solid #505b6c;
+    height: 110px;
+    width: 210px;
+    background-color: black;
+}
+.logout {
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.28px;
+    font-weight: 600;
+    line-height: 25.92px;
+    height: 65px;
+    color: #f87171;
+    border-radius: 7px;
+    width: 210px;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.logout .bi {
+    font-size: 1.4rem;
+    color: #f87171;
+    margin-left: 20px;
+}
+.logout:hover {
+    background-color: #f87171;
+    color: black; /* Change to dark blue on hover */
+}
+
+.logout:hover i{
+    background-color: #f87171;
+    color: black; /* Change to dark blue on hover */
+}
+
+.make{
+    position: absolute;
+    top: 130px;
+    height: 200px;
+    border-radius: 20px;
+    width: 300px;
+    background-color: white;
+    box-shadow: 1px 0 10px 1px #121213;
+    transition: transform .1s ease;
+    padding: 20px;
+}
+.make:hover{
+    transform: scale(1.03) translateY(-4px);
+}
+.make div{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(37, 99, 235);
+}
+.make .write{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(100, 116, 139);
+}
+.make1{
+    position: absolute;
+    top: 130px;
+    left: 320px;
+    height: 200px;
+    border-radius: 20px;
+    width: 300px;
+    background-color: white;
+    transition: transform .1s ease;
+    box-shadow: 1px 0 10px 1px #121213;
+    padding: 20px;
+}
+.make1:hover{
+    transform: scale(1.03) translateY(-4px);
+}
+.make1 div{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(37, 99, 235);
+}
+.make2{
+    position: absolute;
+    top: 130px;
+    left: 640px;
+    height: 200px;
+    border-radius: 20px;
+    width: 300px;
+    background-color: white;
+    box-shadow: 1px 0 10px 1px #121213;
+    transition: transform .1s ease;
+    padding: 20px;
+}
+.make2:hover{
+    transform: scale(1.03) translateY(-4px);
+}
+.make2 div{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 24px;
+    color: rgb(37, 99, 235);
+}
+.make .write,
+.make1 .write,
+.make2 .write{
+    margin-top: 10px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(100, 116, 139);
+}
+.make button{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #306bec;
+    border: 1px solid #ffd600;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 10px;
+    height: 37px;
+    width: 260px;
+}
+.make1 button{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 25px;
+    color: #198754;
+    border: 1px solid #ffd600;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 35px;
+    height: 37px;
+    width: 260px;   
+}
+.make2 button{
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: #0dcaf0;
+    border: 1px solid #ffd600;
+    border-radius: 5px;
+    background-color: white;
+    margin-top: 10px;
+    height: 37px;
+    width: 260px;   
+}
+
+.make button:hover,
+.make1 button:hover,
+.make2 button:hover{
+    background-color: #ffd600;
+    color: #1f2a3c;
+    border: 1px solid #306bec;
+}

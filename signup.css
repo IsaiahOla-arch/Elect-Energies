@@ -1,0 +1,162 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: rgba(83, 83, 82, 0) !important;
+    height: 800px;
+}
+nav {
+    background-color: black !important;
+    height: 117px;
+    border-bottom: 2px solid #ffd600;
+}
+nav img {
+    position: relative;
+    top: 20px;
+    left: 300px;
+    width: 150px;
+    height: 80px;
+}
+nav h1{
+    position: absolute;
+    top: 25px;
+    left: 465px;
+    font-family: Poppins, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 38.4px;
+    color: rgb(255, 214, 0);
+}
+nav main {
+    position: absolute;
+    top: 70px;
+    left: 466px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 17.6px;
+    font-weight: 400;
+    line-height: 26.4px;
+    color: rgba(255, 214, 0, 0.69);
+}
+
+form{
+    box-shadow: 0 0 12px rgba(255, 0, 0, 0.3);
+    position: absolute;
+    top: 150px;
+    left: 400px;
+    width: 430px;
+    border: 1px solid #ffd600;
+    border-radius: 15px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 20px;
+    background-color: #1a1a1a;
+    animation-name: form;
+    animation-duration: 1.8s;
+    animation-timing-function: ease;
+}
+
+form label {
+    display: flex;
+    justify-content: left;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    color: white;
+}
+.head{
+    display: flex;
+    justify-content: center;
+    margin-top: 30px;
+    font-family: Poppins, sans-serif;
+    font-size: 28px;
+    font-weight: 500;
+    line-height: 33.6px;
+    color: #ffffff;
+}
+form input {
+    border: 1px solid #3f3f3f;
+    width: 100%;
+    height: 40px;
+    background-color: #2c2c2c;
+    border-radius: 5px;
+    padding-left: 10px;
+}
+form input:focus{
+    background-color: white;
+}
+input::placeholder {
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: rgb(33, 37, 41);
+    color: #24272a;
+}
+.log-btn {
+    width: 100%;
+    height: 40px;
+    background-color: #ffd600;
+    border: none;
+    border-radius: 5px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: black;
+    margin-top: 20px;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 600;
+    line-height: 24px;
+    color: rgb(255, 255, 255);
+    cursor: pointer;
+}
+.forgot {
+    position: relative;
+    left: 60px;
+    margin-top: 20px;
+    text-decoration-line: white;
+    color: white;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+.acc{
+    text-decoration-line: white;
+    color: white;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+}
+
+.home{
+    border: none;
+    margin-top: 10px;
+    margin-left: 70px;
+    background-color: #6c757d;
+    text-decoration: none;
+    color: white;
+    font-family: Poppins, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    padding: 5px;
+    border-radius: 5px;
+}
+.home a {
+    text-decoration: none;
+    color: white;
+    font-family: Poppins, sans-serif;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 21px;
+}
+@keyframes form{
+    0%{margin-top: 90px;}
+    100%{margin-top: 0;}
+}

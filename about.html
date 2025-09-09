@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elect Energy | About</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+	  <script src="https://kit.fontawesome.com/02d6d643b3.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="icon" href="log.png">
+    <link rel="stylesheet" href="about.css">
+</head>
+<style>
+      /* Background blur effect */
+/* Blur only the page content, not the chat icon */
+#page-content.blur-active {
+  filter: blur(5px);
+  transition: filter 0.8s ease;
+}
+/* Live Chat label (hidden by default) */
+#eeLauncherLabel {
+  position: fixed;
+  top: 380px;
+  left: 50%;
+  bottom: 40%;
+  transform: translateX(-50%);
+  font-size: 32px;
+  font-weight: bold;
+  color: white;
+  text-shadow: 0 0 8px rgba(0,0,0,0.6);
+  opacity: 0;
+  transition: opacity 0.5s ease, bottom 0.5s ease;
+  z-index: 10000;
+}
+
+/* Show when launcher is highlighted */
+.ee-chat-launcher.highlight + #eeLauncherLabel {
+  opacity: 1;
+  bottom: 35%;
+}
+
+/* Center + enlarge + bounce chat launcher */
+.ee-chat-launcher.highlight {
+  left: 50% !important;
+  bottom: 50% !important;
+  transform: translate(-50%, 50%) scale(2);
+  background: #ffd600;
+  box-shadow: 0 0 30px rgba(0, 0, 0, 0.6);
+  animation: bounceIn 1s ease;
+  z-index: 10000;
+}
+
+@keyframes bounceIn {
+  0% { transform: translate(-50%, 50%) scale(0.5); opacity: 0; }
+  60% { transform: translate(-50%, 40%) scale(2.2); opacity: 1; }
+  100% { transform: translate(-50%, 50%) scale(2); }
+}
+
+
+
+    :root{
+      --ee-primary:#ffd600; /* sky-500 */
+      --ee-primary-dark:#ffd600; /* sky-600 */
+      --ee-bg: red; /* deep navy */
+      --ee-panel:red; /* slate-900 */
+      --ee-muted:black; /* slate-400 */
+      --ee-text: black;  /* gray-200 */
+      --ee-user:red; /* green-500 */
+      --ee-bot:#ffd600;  /* blue-500 */
+      --ee-shadow: 0 10px 30px rgba(2, 132, 199, 0.3);
+      --radius: 16px;
+    }
+
+    /* Reset */
+    *, *::before, *::after{ box-sizing: border-box; }
+    /* body{ margin:0; font-family: system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, Noto Sans, "Helvetica Neue", Arial, "Apple Color Emoji", "Segoe UI Emoji"; background:#0a0f1c; color:var(--ee-text); } */
+
+    /* Floating chat button */
+    .ee-chat-launcher{
+      position:fixed; right:18px; font-size: 27px; bottom:18px; z-index:9999;
+      width:64px; height:64px; border-radius:50%;
+      display:grid; place-items:center; cursor:pointer;
+      background:linear-gradient(135deg, var(--ee-primary), var(--ee-primary-dark));
+      color:white; border:none; box-shadow:var(--ee-shadow);
+      transition: transform .15s ease, box-shadow .15s ease; 
+    }
+    /* .ee-chat-launcher:hover{ transform: translateY(-2px); box-shadow:0 14px 40px rgba(2,132,199,.45)} */
+    .ee-chat-launcher svg{ width:28px; height:28px; }
+
+    /* Chat window */
+    .ee-chat{
+      position:fixed; right:18px; bottom:92px; z-index:9999; width: min(380px, calc(100vw - 24px));
+      background:linear-gradient(180deg, #0b1220, #0a0f1c 12%, #0a0f1c);
+      border:1px solid rgba(148,163,184,.15);
+      border-radius: var(--radius);
+      overflow:hidden; display:none; box-shadow: var(--ee-shadow);
+    }
+    .ee-chat.visible{ display:flex; flex-direction:column; height:560px; }
+
+    .ee-chat__header{
+      padding:14px 16px; background:#ffd600; backdrop-filter: blur(10px);
+      display:flex; align-items:center; gap:12px; border-bottom:1px solid rgba(148,163,184,.12);
+    }
+    .ee-avatar{ width:36px; height:36px; border-radius:50%; display:grid; place-items:center; background:black; color: white; box-shadow: inset 0 0 8px rgba(255,255,255,.08); font-weight:700; }
+    .ee-chat__title{ font-weight:700; color: black; letter-spacing:.2px; }
+    .ee-chat__sub{ font-size:12px; color: black; }
+    .ee-close{ margin-left:auto; background:transparent; border:none; color: black; cursor:pointer; font-size:20px; line-height:1; }
+
+    .ee-chat__messages{ flex:1; overflow:auto; padding:14px; background-color: white; display:flex; flex-direction:column; gap:10px; }
+    .ee-bubble{ max-width:85%; padding:10px 12px; border-radius:14px; line-height:1.45; font-size:14px; white-space:pre-wrap; word-wrap:break-word; }
+    .ee-bubble.bot{ background:rgba(59,130,246,.12); border:1px solid rgba(59,130,246,.25); border-bottom-left-radius:6px; }
+    .ee-bubble.user{ margin-left:auto; background:rgba(16, 157, 68, 0.52); border:1px solid rgba(4, 58, 24, 0.25); border-bottom-right-radius:6px; }
+
+    .ee-typing{ display:flex; align-items:center; gap:6px; color:var(--ee-muted); font-size:12px; padding:0 4px; }
+    .ee-dots > span{ display:inline-block; width:6px; height:6px; border-radius:50%; background:var(--ee-muted); opacity:.6; animation: blink 1s infinite; }
+    .ee-dots > span:nth-child(2){ animation-delay:.2s }
+    .ee-dots > span:nth-child(3){ animation-delay:.4s }
+    @keyframes blink{ 0%,80%,100%{opacity:.2} 40%{opacity:1} }
+
+    .ee-chat__input{
+      border-top:1px solid rgba(148,163,184,.12);
+      padding:10px; display:flex; gap:8px; align-items:center; background: #ffd600;
+    }
+    .ee-chat__input input{ flex:1; padding:12px 12px; border-radius:12px; border:1px solid rgba(148,163,184,.2); background:white; color:var(--ee-text); outline:none; }
+    .ee-chat__input input::placeholder{ color:#64748b }
+    .ee-send{ padding:10px 14px; border-radius:12px; border:none; background: white; cursor:pointer; font-weight:600; }
+    .ee-send:disabled{ opacity:.6; cursor:not-allowed }
+
+    .ee-footer-hint{ font-size:11px; color: black; background: white; text-align:center; padding:6px 0 10px }
+
+    /* Scrollbar styling */
+    .ee-chat__messages::-webkit-scrollbar{ width:10px }
+    .ee-chat__messages::-webkit-scrollbar-thumb{ background:rgb(156, 154, 154); border-radius:10px }
+
+    @media (max-height:620px){ .ee-chat.visible{ height:70vh } }
+</style>
+<body>
+    <div id="preloader">
+  	    <div class="loader">
+  	      <i class="fa-solid fa-bolt"></i>
+  	    </div>
+    </div>
+<div class="top-header">
+  <div class="left">
+    <span><i class="fa-solid fa-phone"></i> +234 901 383 1886</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    <span><i class="fa-solid fa-play"></i> info@electenergy.com</span>
+  </div>
+  <div class="right">
+    <a href="https://web.facebook.com/stories/122112388544265445/UzpfSVNDOjExMzg4MzkyNDE0NzM2NzA=/?bucket_count=9&source=story_tray" target="_blank"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-facebook" viewBox="0 0 16 16"><path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"/></svg></a>
+    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-instagram" viewBox="0 0 16 16"><path d="M8 0C5.829 0 5.556.01 4.703.048 3.85.088 3.269.222 2.76.42a3.9 3.9 0 0 0-1.417.923A3.9 3.9 0 0 0 .42 2.76C.222 3.268.087 3.85.048 4.7.01 5.555 0 5.827 0 8.001c0 2.172.01 2.444.048 3.297.04.852.174 1.433.372 1.942.205.526.478.972.923 1.417.444.445.89.719 1.416.923.51.198 1.09.333 1.942.372C5.555 15.99 5.827 16 8 16s2.444-.01 3.298-.048c.851-.04 1.434-.174 1.943-.372a3.9 3.9 0 0 0 1.416-.923c.445-.445.718-.891.923-1.417.197-.509.332-1.09.372-1.942C15.99 10.445 16 10.173 16 8s-.01-2.445-.048-3.299c-.04-.851-.175-1.433-.372-1.941a3.9 3.9 0 0 0-.923-1.417A3.9 3.9 0 0 0 13.24.42c-.51-.198-1.092-.333-1.943-.372C10.443.01 10.172 0 7.998 0zm-.717 1.442h.718c2.136 0 2.389.007 3.232.046.78.035 1.204.166 1.486.275.373.145.64.319.92.599s.453.546.598.92c.11.281.24.705.275 1.485.039.843.047 1.096.047 3.231s-.008 2.389-.047 3.232c-.035.78-.166 1.203-.275 1.485a2.5 2.5 0 0 1-.599.919c-.28.28-.546.453-.92.598-.28.11-.704.24-1.485.276-.843.038-1.096.047-3.232.047s-2.39-.009-3.233-.047c-.78-.036-1.203-.166-1.485-.276a2.5 2.5 0 0 1-.92-.598 2.5 2.5 0 0 1-.6-.92c-.109-.281-.24-.705-.275-1.485-.038-.843-.046-1.096-.046-3.233s.008-2.388.046-3.231c.036-.78.166-1.204.276-1.486.145-.373.319-.64.599-.92s.546-.453.92-.598c.282-.11.705-.24 1.485-.276.738-.034 1.024-.044 2.515-.045zm4.988 1.328a.96.96 0 1 0 0 1.92.96.96 0 0 0 0-1.92m-4.27 1.122a4.109 4.109 0 1 0 0 8.217 4.109 4.109 0 0 0 0-8.217m0 1.441a2.667 2.667 0 1 1 0 5.334 2.667 2.667 0 0 1 0-5.334"/></svg></a>
+    <a href="#"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-twitter-x" viewBox="0 0 16 16"><path d="M12.6.75h2.454l-5.36 6.142L16 15.25h-4.937l-3.867-5.07-4.425 5.07H.316l5.733-6.57L0 .75h5.063l3.495 4.633L12.601.75Zm-.86 13.028h1.36L4.323 2.145H2.865z"/></svg></a>
+  </div>
+</div>
+    </div>
+<nav>
+  <div class="logo-container">
+    <img src="gpt-bla.png" title="Elect Energy" alt="logo" height="70px">
+    <!-- Hamburger beside logo -->
+    <div class="hamburger" onclick="document.querySelector('nav').classList.toggle('open')">
+      <i class="fa-solid fa-bars"></i>
+    </div>
+  </div>
+
+  <ul class="nav-links">
+  <li><a href="index.html">Home<span></span></a></li>
+  <li><a class="active" href="about.html">About<span></span></a></li>
+  <li><a href="news.html">News<span></span></a></li>
+  <li><a href="contact.html">Contact<span></span></a></li>
+</ul>
+
+  <div class="enter">
+    <button class="sign"><a style="color: white; text-decoration: none;" href="signup.php">SignUp</a></button>
+    <button class="log"><a style="color: white; text-decoration: none;" href="login.php">Login</a></button>
+  </div>
+</nav>
+
+    <div class="back">
+        <h1>About Us</h1>
+        <main>Elect Energy delivers safe, reliable, and sustainable power <br> solutions for homes, businesses, and communities.</main>
+        <button onclick="location.href='contact.html'">Contact Us</button>
+    </div>
+    <div class="container">
+      	<div class="story">
+			<!-- <i class="bi bi-book"></i> -->
+			<h1>Our Story</h1>
+			<main>Elect Energy was founded with one vision — to deliver reliable, affordable, and sustainable energy solutions. From humble beginnings, we’ve grown into a trusted name, powering homes, businesses, and communities with innovation and integrity. Our journey is driven by a passion for progress and a commitment to a brighter, cleaner future.</main>
+		</div>
+    </div><hr>
+    <div class="container">
+    	<div class="mis">
+			<!-- <i class="bi bi-rocket-takeoff"></i> -->
+			<h1>Our Mission</h1>
+			<main>At Elect Energy, our mission is to provide reliable, affordable, and sustainable energy solutions that empower individuals, businesses, and communities. We are committed to driving innovation, embracing renewable technologies, and delivering services that not only meet today’s needs but also protect the future of our planet. Through integrity, responsibility, and excellence, we aim to light up lives, support growth, and create a brighter, greener tomorrow for all.</main>
+			</div>
+    </div><hr>
+	<div class="container">
+    	<div class="vis">
+			<!-- <i class="fa-solid fa-earth-americas"></i> -->
+			<h1>Our Vision</h1>
+			<main>At Elect Energy, our vision is to shape a world where clean, reliable, and affordable energy is accessible to all. We strive to lead in innovation and sustainability, ensuring that homes, businesses, and communities are powered responsibly. We see a greener future where energy drives progress without harming the planet — a future built on technology, responsibility, and a commitment to generations yet to come.</main>
+		</div>
+    </div>
+<div class="blaba">
+	<h1 class="about-title">OUR TEAM</h1>
+	<div class="carousel-container">
+		<button class="nav-arrow left">‹</button>
+		<div class="carousel-track">
+			<div class="card" data-index="0">
+				<img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Team Member 1">
+			</div>
+			<div class="card" data-index="1">
+				<img src="slike.png" alt="Team Member 2">
+			</div>
+			<div class="card" data-index="2">
+				<img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8cHJvZmVzc2lvbmFsJTIwcGVvcGxlfGVufDB8fDB8fHww" alt="Team Member 3">
+			</div>
+			<div class="card" data-index="3">
+				<img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8cHJvZmVzc2lvbmFsJTIwcGVvcGxlfGVufDB8fDB8fHww" alt="Team Member 4">
+			</div>
+			<div class="card" data-index="4">
+				<img src="https://images.unsplash.com/photo-1655249481446-25d575f1c054?w=900&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjh8fHByb2Zlc3Npb25hbCUyMHBlb3BsZXxlbnwwfHwwfHx8MA%3D%3D" alt="Team Member 5">
+			</div>
+			<div class="card" data-index="5">
+				<img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=3687&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Team Member 6">
+			</div>
+		</div>
+		<button class="nav-arrow right">›</button>
+	</div>
+
+	<div class="member-info">
+		<h2 class="member-name">David Kim</h2>
+		<p class="member-role">Founder</p>
+	</div>
+
+	<div class="dots">
+		<div class="dot active" data-index="0"></div>
+		<div class="dot" data-index="1"></div>
+		<div class="dot" data-index="2"></div>
+		<div class="dot" data-index="3"></div>
+		<div class="dot" data-index="4"></div>
+		<div class="dot" data-index="5"></div>
+	</div><hr>
+</div>
+<div class="cont">
+	<h1>SMART ENERGY FOR EVERYONE</h1>
+	<button onclick="location.href='#'">CONTACT US</button>
+</div>
+<div class="form">
+  <form>
+    <h1>Contact Us&nbsp;&nbsp;&nbsp;<i class="fa-brands fa-whatsapp"></i></h1>
+    <span class="ver1">
+      <label>Name</label><br>
+      <input id="name" type="text" placeholder="Fullname" required>
+    </span>
+    <span class="ver2">
+      <label>Email</label><br>
+      <input id="email" type="email" placeholder="Email" required>
+    </span>
+    <div class="ver3">
+      <label>Message</label><br>
+      <textarea id="message" rows="10" placeholder="Your Message"></textarea><br>
+      <button type="button" onclick="sendToWhatsapp()">Submit</button>
+      <button type="reset">Reset</button>
+    </div>
+  </form>
+
+  <div class="imge">
+    <img class="img" src="conta.jpg" alt="Contact">
+  </div>
+</div>
+
+<div class="container quality-section">
+  <div class="qua">
+    <h1>Our Quality</h1>
+    <main>
+      Reliability – We provide consistent and dependable energy solutions you can trust every day.
+      Innovation – We adopt cutting-edge technologies to deliver smarter and more efficient power systems.
+      Sustainability – We focus on clean, renewable, and environmentally friendly energy practices.
+      Safety First – We prioritize the safety of our customers, communities, and employees in all operations.
+      Customer-Centric – Our services are designed with the customer in mind, ensuring satisfaction and value.
+      Integrity – We maintain transparency and honesty in every project we deliver.
+    </main>
+  </div>
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wbnaHgSttVo?si=Whd3xng5NU7Q3R8P" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
+
+</div>
+
+<footer class="footer-bar">
+    <div class="container">
+        &copy; 2025 Elect Energy. All rights reserved. |
+        <span style="font-size:1rem;">Need help? <a href="mailto:temiloluwaoladimeji70@gmail.com" target="_blank">Contact Support</a></span>
+	  <span class="court" style="margin-left: 270px;">Courtesy — 	Temiloluwa Oladimeji</span>
+    </div>
+</footer>
+<button id="scrollTopBtn" title="Back to top">
+  <i class="fa-solid fa-arrow-up"></i>
+</button>
+
+  <button class="ee-chat-launcher" id="eeLauncher" aria-label="Open chat">
+    <!-- chat bubble icon -->
+    <i class="fa-solid fa-headset" style="color: black;"></i>
+  </button>
+  <section class="ee-chat" id="eeChat" aria-live="polite" aria-label="Elect Energy Live Chat">
+    <header class="ee-chat__header">
+      <div class="ee-avatar">EE</div>
+      <div>
+        <div class="ee-chat__title">Elect Energy Support</div>
+        <div class="ee-chat__sub">Ask about products, pricing, installations & more</div>
+      </div>
+      <button class="ee-close" id="eeClose" aria-label="Close chat">✕</button>
+    </header>
+
+    <div class="ee-chat__messages" id="eeMessages"></div>
+
+    <div class="ee-chat__input">
+      <input id="eeInput" type="text" placeholder="Type your question… (e.g. pricing, solar, inverters)" autocomplete="off" />
+      <button class="ee-send" id="eeSend">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="black" class="bi bi-send" viewBox="0 0 16 16">
+          <path d="M15.854.146a.5.5 0 0 1 .11.54l-5.819 14.547a.75.75 0 0 1-1.329.124l-3.178-4.995L.643 7.184a.75.75 0 0 1 .124-1.33L15.314.037a.5.5 0 0 1 .54.11ZM6.636 10.07l2.761 4.338L14.13 2.576zm6.787-8.201L1.591 6.602l4.339 2.76z"/>
+        </svg>
+      </button>
+    </div>
+    <div class="ee-footer-hint">Type <strong>help</strong> to see sample questions</div>
+  </section>
+
+
+<script>
+  const scrollTopBtn = document.getElementById("scrollTopBtn");
+
+  // Show button when scrolling down
+  window.addEventListener("scroll", () => {
+    if (window.scrollY > 300) {
+      scrollTopBtn.style.display = "block";
+    } else {
+      scrollTopBtn.style.display = "none";
+    }
+  });
+
+  // Scroll to top over 2 seconds
+  scrollTopBtn.addEventListener("click", () => {
+    const start = window.scrollY;
+    const duration = 2000; // 2 seconds
+    const startTime = performance.now();
+
+    function scrollStep(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1); 
+      const ease = 1 - Math.pow(1 - progress, 3); // ease-out cubic
+      window.scrollTo(0, start * (1 - ease));
+
+      if (elapsed < duration) {
+        requestAnimationFrame(scrollStep);
+      }
+    }
+
+    requestAnimationFrame(scrollStep);
+  });
+  
+</script>
+<script>
+  // Hide preloader once page is fully loaded
+  window.addEventListener("load", function() {
+    document.getElementById("preloader").style.display = "none";
+  });
+</script>
+
+<script>
+ function sendToWhatsapp(){
+    let result = confirm("Do you want to send this?");
+    let number = "+2349013831886";
+    
+
+
+    if(result){
+        let name = document.getElementById('name').value;
+        let email = document.getElementById('email').value;
+        let message = document.getElementById('message').value;
+        var url = "https://wa.me/" + number + "?text="
+        + "My name is : " +name+ "%0a"
+        + "and this is my email : " +email+ "%0a"
+        + "I want to tell you that : " +message+ "%0a%0a";
+        window.open(url, '_blank').focus();
+    }else{
+        window.location.href= "index.html";
+    }
+    
+}
+</script>
+<script src="about.js"></script>
+
+<script>
+  const popSound = new Audio("pop.mp3"); // your sound file
+
+    // 🚨 Forcefully clear localStorage and block saving
+    localStorage.removeItem("ee_chat_history_v1");
+    window.saveHistory = () => {}; // disable saving
+    window.loadHistory = () => false; // disable restoring
+
+    /* ==============================
+       BASIC COMPANY PROFILE (EDIT ME)
+       Update these values to match your real details.
+    =============================== */
+    const COMPANY = {
+      name: "Elect Energy",
+      tagline: "Reliable solar, inverters & backup power",
+      locations: ["Lagos", "Abuja", "Port Harcourt"], // <-- edit
+      hours: "Mon–Sat 8:00–18:00 (WAT)",
+      phone: "+234-800-123-4567", // <-- edit
+      whatsapp: "+234-800-123-4567", // <-- edit
+      email: "hello@electenergy.ng", // <-- edit
+      website: "https://isaiahola-arch.github.io/Elect-Energy/", // <-- edit
+      responseTime: "Typically replies within 1 hour",
+      delivery: "Nationwide delivery in 2–5 working days",
+      warranty: "Up to 5 years on inverters & panels; 1–3 years on batteries (brand-dependent)",
+      services: [
+        "Solar panel supply & installation",
+        "Inverter & battery systems",
+        "Energy audits and system sizing",
+        "Maintenance & repairs",
+        "Smart metering and monitoring"
+      ],
+      payment: "Bank transfer, POS, and installment plans (subject to approval)",
+      estInstallTime: "Small homes: 1–2 days; larger systems: 3–7 days",
+      priceNote: "Pricing depends on load, components, and site conditions. Free quotation available.",
+    };
+const chatWidget = document.getElementById("chat-widget");
+const chatToggle = document.getElementById("chat-toggle");
+const chatClose = document.getElementById("chat-close");
+const chatMessages = document.getElementById("chat-messages");
+const chatInput = document.getElementById("chat-input");
+const chatSend = document.getElementById("chat-send");
+
+// ✅ Add this block here
+const chatBox = document.getElementById("eeMessages");
+const launcher = document.getElementById("eeLauncher");
+const chatWindow = document.getElementById("eeChat");
+const closeBtn = document.getElementById("eeClose");
+
+launcher.addEventListener("click", () => {
+  chatBox.innerHTML = ""; // clear messages every refresh
+  chatWindow.classList.add("visible");
+  addMessage("bot", "👋 Welcome to Elect Energy! How can we help you today?");
+  
+});
+
+closeBtn.addEventListener("click", () => {
+  chatWindow.classList.remove("visible");
+});
+
+    /* ==============================
+       KNOWLEDGE BASE (EDIT/ADD Q&A)
+       Add your own Q&A. Matching is keyword-based with light fuzzy search.
+    =============================== */
+   const KNOWLEDGE = [
+  {
+    q: "What does Elect Energy do?",
+    a: () => 'We design and install solar, inverter, and battery backup systems. We also provide energy audits, maintenance, and monitoring. Our typical services include:\n• ${COMPANY.services.join("\n• ")}.',
+    keywords: [
+      // core
+      "what", "service", "services", "offer", "offers", "offered", "offering",
+      "provide", "provides", "provided", "providing",
+      "supply", "supplies", "supplied", "supplying",
+      "do", "does", "did", "doing",
+      "company", "companies", "business", "businesses",
+      "about", "info", "information", "details",
+      "solution", "solutions", "product", "products",
+      // extras
+      "work", "works", "worked", "working",
+      "handle", "handles", "handled", "handling",
+      "install", "installs", "installed", "installing",
+      "solar", "panel", "panels", "inverter", "inverters",
+      "battery", "batteries", "backup", "power", "electricity", "energy"
+    ]
+  },
+
+  {
+    q: "help",
+    a: () => 'Possible questions to ask:\n 1. What does Elect Energy do?\n 2. Where are you located?\n 3. Working hours\n 4. Contact details\n 5. Do you offer warranty?',
+    keywords: [
+      "help", "helps", "helped", "help me", "offers", "offered", "offering",
+    ],
+  },
+
+
+  {
+    q: "Where are you located?",
+    a: () => `We serve customers across Nigeria. Primary locations include ${COMPANY.locations.join(", ")}. We also offer remote consultations and nationwide delivery.`,
+    keywords: [
+      "where", "location", "are", "locations", "located","you", "your", "locating",
+      "branch", "branches", "office", "offices", "address", "addresses",
+      "operate", "operates", "operated", "operating",
+      "serve", "serves", "served", "serving",
+      "cover", "covers", "covered", "covering",
+      "area", "areas", "region", "regions", "state", "states",
+      "country", "nation", "nationwide", "across", "Nigeria", "Lagos", "Abuja", "Port Harcourt"
+    ]
+  },
+
+  {
+    q: "Working hours",
+    a: () => `Our working hours are ${COMPANY.hours}. For urgent issues, WhatsApp us on ${COMPANY.whatsapp}.`,
+    keywords: [
+      "hour", "hours", "open", "opens", "opened", "opening",
+      "close", "closes", "closed", "closing",
+      "work", "works", "worked", "working",
+      "time", "times", "timing", "schedule", "schedules",
+      "day", "days", "weekday", "weekdays", "weekend", "weekends",
+      "available", "availability", "availability times",
+      "monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"
+    ]
+  },
+
+  {
+    q: "Contact details",
+    a: () => `You can reach us at:\n• Phone/WhatsApp: ${COMPANY.whatsapp}\n• Email: ${COMPANY.email}\n• Website: ${COMPANY.website}`,
+    keywords: [
+      "contact", "contacts", "contacted", "contacting",
+      "phone", "phones", "phoned", "phoning",
+      "number", "numbers", "call", "calls", "called", "calling",
+      "email", "emails", "emailed", "emailing",
+      "whatsapp", "chat", "messaged", "message", "messages", "messaging",
+      "support", "help", "helpline", "helpdesk",
+      "website", "websites", "link", "links",
+      "address", "addresses", "location", "locations"
+    ]
+  },
+  
+  {
+    q: "Do you offer warranty?",
+    a: () => "Yes. ${COMPANY.name} We provide after-sales support and maintenance plans.",
+    keywords: [
+      "warranty", "warranties", "guarantee", "guarantees",
+      "guaranteed", "guaranteeing",
+      "assure", "assures", "assured", "assuring",
+      "cover", "covers", "covered", "covering",
+      "support", "supports", "supported", "supporting",
+      "after sale", "after sales", "after-sales",
+      "return", "returns", "returned", "returning",
+      "replace", "replaces", "replaced", "replacing",
+      "valid", "validity", "protection", "protections"
+    ]
+  }
+];
+
+
+    /* ==============================
+       LIGHTWEIGHT MATCHING ENGINE
+       - Normalizes text, checks keyword overlap.
+       - Computes a simple similarity score using token overlap (Jaccard).
+    =============================== */
+    
+    function normalize(str){
+      return (str || "").toLowerCase().replace(/[^a-z0-9\s]/g, " ").replace(/\s+/g, " ").trim();
+    }
+
+    function tokenize(str){ return normalize(str).split(" ").filter(Boolean); }
+
+    function jaccard(aTokens, bTokens){
+      const a = new Set(aTokens); const b = new Set(bTokens);
+      const inter = new Set([...a].filter(x => b.has(x)));
+      const union = new Set([...a, ...b]);
+      return union.size === 0 ? 0 : inter.size / union.size;
+    }
+
+    function findBestAnswer(userText){
+      const tokens = tokenize(userText);
+      let best = { score: 0, item: null };
+
+      for(const item of KNOWLEDGE){
+        const keyScore = jaccard(tokens, item.keywords || []);
+        const qScore = jaccard(tokens, tokenize(item.q));
+        const score = (keyScore * 0.7) + (qScore * 0.3);
+        if(score > best.score){ best = { score, item }; }
+      }
+
+      if(best.score >= 0.18){
+        const text = typeof best.item.a === 'function' ? best.item.a() : best.item.a;
+        return { reply: text, matched: best.item.q, score: best.score };
+      }
+
+      // Fallback: route to contact with CTA
+      return {
+        reply: `I couldn't find an exact answer to that yet. Please share more details or contact us directly:\n• WhatsApp: ${COMPANY.whatsapp}\n• Email: ${COMPANY.email}\nYou can also type \"help\" to see example questions.`,
+        matched: null,
+        score: 0
+      };
+    }
+
+    /* ==============================
+       CHAT UI LOGIC
+    =============================== */
+    const $ = sel => document.querySelector(sel);
+    const messagesEl = $('#eeMessages');
+    const inputEl = $('#eeInput');
+    const sendBtn = $('#eeSend');
+    const chatEl = $('#eeChat');
+    const launcherEl = $('#eeLauncher');
+    const closeEl = $('#eeClose');
+
+    const STORAGE_KEY = 'ee_chat_history_v1';
+
+// Create one Audio object globally
+
+
+// Unified addMessage function
+function addMessage(text, who = "bot") {
+  const bubble = document.createElement("div");
+  bubble.className = `ee-bubble ${who}`;
+  bubble.textContent = text;
+  messagesEl.appendChild(bubble);
+  messagesEl.scrollTop = messagesEl.scrollHeight;
+
+  // Play sound only if user interacted (click/keypress)
+  try {
+    popSound.currentTime = 0; 
+    popSound.play().catch(err => console.log("Sound blocked until user interacts:", err));
+  } catch (err) {
+    console.log("Sound error:", err);
+  }
+}
+
+
+    function addTyping(){
+      const wrap = document.createElement('div');
+      wrap.className = 'ee-typing';
+      wrap.setAttribute('data-typing', '1');
+      wrap.innerHTML = `<span class="ee-dots"><span></span><span></span><span></span></span> typing…`;
+      messagesEl.appendChild(wrap);
+      messagesEl.scrollTop = messagesEl.scrollHeight;
+      return wrap;
+    }
+
+    function removeTyping(){
+      const t = messagesEl.querySelector('[data-typing="1"]');
+      if(t) t.remove();
+    }
+
+    function saveHistory(){
+      const nodes = [...messagesEl.children];
+      const data = nodes.map(n => ({
+        type: n.classList.contains('ee-bubble') ? (n.classList.contains('user') ? 'user' : 'bot') : 'meta',
+        text: n.textContent
+      }));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+    }
+
+    function loadHistory(){
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if(!raw) return false;
+      try{
+        const data = JSON.parse(raw);
+        data.forEach(m => {
+          if(m.type === 'bot' || m.type === 'user') addMessage(m.text, m.type);
+          // ignore meta/typing stored
+        });
+        return true;
+      }catch(_){ return false; }
+    }
+
+    function greet(){
+      addMessage(`Hi 👋, I'm the ${COMPANY.name} assistant. How may I help you today`);
+    }
+
+    function toggleChat(open){
+      const willOpen = (open === undefined) ? !chatEl.classList.contains('visible') : open;
+      chatEl.classList.toggle('visible', willOpen);
+      if(willOpen){
+        setTimeout(() => inputEl.focus(), 120);
+        if(!loadHistory()){
+          messagesEl.innerHTML = '';
+          greet();
+        }
+      }
+      saveHistory();
+    }
+    
+    launcherEl.addEventListener('click', () => toggleChat(true));
+    closeEl.addEventListener('click', () => toggleChat(false));
+
+    function handleSend(){
+      const text = inputEl.value.trim();
+      if(!text) return;
+      addMessage(text, 'user');
+      inputEl.value = '';
+      inputEl.focus();
+      saveHistory();
+
+      const typing = addTyping();
+      // Simulate thinking delay
+      setTimeout(() => {
+        const { reply } = findBestAnswer(text);
+        removeTyping();
+        addMessage(reply, 'bot');
+        saveHistory();
+      }, 1500);
+    }
+
+    inputEl.addEventListener('keydown', (e) => {
+      if(e.key === 'Enter') handleSend();
+    });
+    sendBtn.addEventListener('click', handleSend);
+
+    // Optionally open chat on first visit after 3s
+    setTimeout(() => {
+      if(!localStorage.getItem('ee_seen')){
+        toggleChat(true);
+        localStorage.setItem('ee_seen','1');
+      }
+    }, 3000);
+  window.addEventListener("load", () => {
+  const launcher = document.getElementById("eeLauncher");
+  const pageContent = document.getElementById("page-content");
+  const label = document.getElementById("eeLauncherLabel");
+
+  // Blur page + show launcher + label
+  pageContent.classList.add("blur-active");
+  launcher.classList.add("highlight");
+
+  // After 3 seconds → remove blur, reset launcher & hide label
+  setTimeout(() => {
+    pageContent.classList.remove("blur-active");
+    launcher.classList.remove("highlight");
+    label.style.display = "none"; // ✅ hides Live Chat text
+  }, 3000);
+});
+
+
+
+</script>
+</body>
+</html>

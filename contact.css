@@ -1,0 +1,333 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Preloader */
+/* Preloader */
+#preloader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 99999;
+}
+
+.loader {
+  font-size: 80px;
+  color: #ffd600;
+  animation: pulse 1s infinite alternate, glow 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+  from { transform: scale(1); }
+  to { transform: scale(2); }
+}
+
+@keyframes glow {
+  0% { text-shadow: 0 0 5px #ffd600, 0 0 15px #ffd600; }
+  50% { text-shadow: 0 0 20px #ffd600, 0 0 30px #ffae00; }
+  100% { text-shadow: 0 0 10px #ffd600, 0 0 20px #ffd600; }
+}
+
+
+.top-header {
+  background-color: #222;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 5%;
+  font-size: 14px;
+}
+
+.top-header a {
+  color: #ffd600;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: color 0.3s ease;
+}
+
+.top-header a:hover {
+  color: #fff;
+}
+
+.top-header .top-right i {
+  font-size: 16px;
+  margin-left: 8px;
+}
+nav {
+  	background-color: white;
+  	display: flex;
+  	box-shadow: 0 2px 4px black;
+}
+nav.fixed {
+  	position: fixed;
+  	top: 0;
+  	left: 0;
+  	width: 100%;
+  	z-index: 1000;
+}
+.nav-links {
+  display: flex;
+  list-style: none;
+  gap: 15px;
+}
+.nav-links img {
+  margin-left: 20px;
+}
+
+.nav-links a {
+  position: relative;
+  top: 20px;
+  text-decoration: none;
+  color: black;
+  font-size: 20px;
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 4px;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: transform 0.3s ease; /* smooth animation */
+}
+li a.active {
+  	color: #ffd600;
+}
+nav a span {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 3px solid black;
+  border-image: linear-gradient(to right, #222222 40%, #ffd600 100%) 1;
+  transform: scale(0) translateY(50px);
+  transition: 0.5s;
+}
+
+nav a:hover span {
+	
+  	transform: scale(1) translateY(0);
+  	opacity: 1;
+}
+
+/* Sub-menu hidden by default */
+.nav-links .sub-menu {
+  display: none;
+  position: absolute;
+  background: white;
+  min-width: 180px;
+  z-index: 1000;
+}
+.sub-menu{
+  height: 80px;
+  padding-left: 0 !important;
+  /* margin-left: 0 !important; */
+  margin-top: 20px;
+}
+/* Sub-menu items */
+.nav-links .sub-menu li {
+  height: 70px;
+  list-style: none;
+}
+
+.nav-links .sub-menu a {
+  display: block;
+  padding: 10px 15px;
+  color: black;
+  text-decoration: none;
+}
+
+.nav-links .sub-menu a:hover {
+  background: #ffd600;
+  color: black;
+}
+
+/* Show submenu on hover */
+.nav-links li:hover > .sub-menu {
+  display: block;
+}
+nav, .nav-links {
+  position: relative;
+}
+
+.enter {
+  border: none;
+  display: flex;
+  height: 35px;
+  margin-top: 25px;
+}
+
+.sign,
+.log {
+  border: 2px solid #ffd600;
+  border-radius: 5px;
+  background: linear-gradient(to right, #222222 40%, #ffd600 100%);
+  color: white;
+  font-size: 16px;
+  cursor: pointer;
+  padding: 0 10px;
+}
+
+.sign {
+  margin-left: 320%;  /* instead of 450px */
+}
+
+.log {
+  margin-left: 10px;
+}
+
+.sign:hover,
+.log:hover {
+  background: linear-gradient(to right, #ffd600 50%, #222222 100%);
+  color: black;
+}
+ .news-hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+              url('contact.jpg') center/cover no-repeat;
+  color: #fff;
+  text-align: center;
+  padding: 100px 20px;
+}
+.news-hero h1 {
+  font-size: 3rem;
+  font-weight: bold;
+}
+.sub{
+    background-color: #ffd600;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    display: flex;
+    justify-content: center;
+    padding-top: 30px;
+    padding-bottom: 30px;
+}
+iframe {
+    background-color: #fff7cc;
+    border: 5px solid black;
+    padding: 60px;
+    display: block;
+    margin: 0 auto;   /* centers it horizontally */
+    max-width: 100%;  /* makes it responsive on small screens */
+}
+.footer-bar {
+    margin-top: 100px;
+    background: black;
+    padding: 20px 0;
+    position: relative;
+    font-family: Inter, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: #ffd600;
+}
+.logo-container {
+  display: flex;
+  align-items: center;   /* vertical centering */
+  justify-content: space-between; /* space out logo and hamburger */
+}
+
+.logo-container img {
+  height: 70px;
+}
+
+.hamburger {
+  font-size: 28px;
+  cursor: pointer;
+  margin-left: 150px; /* small gap between logo and hamburger */
+  display: none;     /* hidden by default on large screens */
+}
+
+/* Show hamburger only on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+  }
+}
+@media screen and (max-width: 500px){
+  .court{
+    margin-left: 0 !important;
+  }	/* 🔒 Prevent horizontal scrolling */
+.nav-arrow{
+	display: none;
+}
+iframe{
+    width: 1000px;
+}
+.ee-chat{
+    height: 395px !important;
+    width: 300px;
+  }
+nav {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px 20px;	
+}
+.sub{
+    line-height: 20px;
+    margin-top: 60px !important;
+    font-size: 15px;
+}
+.nav-links,
+.enter {
+    display: none;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav.open .nav-links,
+nav.open .enter {
+    display: flex;
+}
+
+  .nav-links a {
+    margin-left: 0;
+    font-size: 18px;
+    display: block;
+    width: 100%;
+    
+  }
+  #eeLauncherLabel{
+    margin-top: 30px !important;
+    color: black !important;
+  }
+  .enter {
+    width: 40%;
+    margin-bottom: 50px;
+    margin-top: 10px;
+    margin-left: 0 !important;
+	  z-index: 2;
+	  text-decoration: none !important;
+  }
+
+  .sign,
+  .log{
+    margin-left: 43px;
+  }
+
+  /* Show hamburger beside logo on mobile */
+  .hamburger {
+    display: flex;
+  }
+
+  /* Keep nav above floating buttons */
+
+
+/* Push chat launcher further down */
+  .ee-chat-launcher {
+    bottom: 20px; /* stays at bottom */
+    right: 18px;
+    z-index: 1000; /* lower than nav */
+  }
+
+  .ee-chat {
+    bottom: 92px;
+    right: 18px;
+    z-index: 1000; /* lower than nav */
+  }
+}
